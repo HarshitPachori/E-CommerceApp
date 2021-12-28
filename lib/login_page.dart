@@ -17,12 +17,17 @@ class _LoginPageState extends State<LoginPage> {
   final List<String> _images = [
     "https://ouch-cdn2.icons8.com/As6ct-Fovab32SIyMatjsqIaIjM9Jg1PblII8YAtBtQ/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNTg4/LzNmMDU5Mzc0LTky/OTQtNDk5MC1hZGY2/LTA2YTkyMDZhNWZl/NC5zdmc.png",
     "https://ouch-cdn2.icons8.com/vSx9H3yP2D4DgVoaFPbE4HVf6M4Phd-8uRjBZBnl83g/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNC84/MzcwMTY5OS1kYmU1/LTQ1ZmEtYmQ1Ny04/NTFmNTNjMTlkNTcu/c3Zn.png",
-    "https://ouch-cdn2.icons8.com/fv7W4YUUpGVcNhmKcDGZp6pF1-IDEyCjSjtBB8-Kp_0/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMTUv/ZjUzYTU4NDAtNjBl/Yy00ZWRhLWE1YWIt/ZGM1MWJmYjBiYjI2/LnN2Zw.png",
+    "https://ouch-cdn2.icons8.com/nMHXisVroUSuT03r_Imr54zfArFb_9INHErAKA5q1YY/rs:fit:196:196/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvOTc3/LzZiYjlmMWVlLTBl/OWEtNDU1My1iN2E3/LWVmY2I0OGU4NmRh/Zi5zdmc.png",
     "https://ouch-cdn2.icons8.com/AVdOMf5ui4B7JJrNzYULVwT1z8NlGmlRYZTtg1F6z9E/rs:fit:784:767/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvOTY5/L2NlMTY1MWM5LTRl/ZjUtNGRmZi05MjQ3/LWYzNGQ1MzhiOTQ0/Mi5zdmc.png",
   ];
 
   @override
   void initState() {
+    super.initState();
+    setTimer();
+  }
+
+  setTimer() {
     Timer.periodic(const Duration(seconds: 5), (timer) {
       setState(() {
         activeIndex++;
@@ -32,8 +37,13 @@ class _LoginPageState extends State<LoginPage> {
         }
       });
     });
+  }
 
-    super.initState();
+  @override
+  void dispose() {
+   
+    super.dispose();
+    setTimer();
   }
 
   @override
