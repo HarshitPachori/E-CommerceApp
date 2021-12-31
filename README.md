@@ -1,7 +1,5 @@
-# currently working on it 
-
-A new Flutter project.
+# I AM CURRENTLY WORKING ON IT ✌🏻😄
 
 
-# E-CommerceApp
+### E-CommerceApp
 
