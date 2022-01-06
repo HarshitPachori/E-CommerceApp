@@ -1,41 +1,42 @@
 {
   "project_info": {
-    "project_number": "1091350345675",
-    "project_id": "flutter-database-71595",
-    "storage_bucket": "flutter-database-71595.appspot.com"
+    "project_number": "725386009438",
+    "firebase_url": "https://e-commerce-app-36b92-default-rtdb.firebaseio.com",
+    "project_id": "e-commerce-app-36b92",
+    "storage_bucket": "e-commerce-app-36b92.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1091350345675:android:b91b02c80b92681ad4284e",
+        "mobilesdk_app_id": "1:725386009438:android:237124488c3bfe92688dcf",
         "android_client_info": {
-          "package_name": "com.example.e_commerce"
+          "package_name": "com.example.e_commerceapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1091350345675-8oa454djgfg3v7umi6gja3ju8iumt5n5.apps.googleusercontent.com",
+          "client_id": "725386009438-lo2at0mi4vfgbmicb4fac475ts875fus.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.e_commerce",
-            "certificate_hash": "0631491bd378f958fcb1c41b6e3f279c9dd82ec6"
+            "package_name": "com.example.e_commerceapp",
+            "certificate_hash": "60368cbf8c5a3a414d1c525ba530777794d8c75c"
           }
         },
         {
-          "client_id": "1091350345675-3dei34hm71duqqhipjn9g02siiv5ep3p.apps.googleusercontent.com",
+          "client_id": "725386009438-06qbb8u2n7cenju4p2sr8ounguha9kv1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCmoziTGYw9CxJS1tdZ_mJLzUVLqD3mEOY"
+          "current_key": "AIzaSyBrV2HR6ekdaoayByR_wumunC1jt1cp6Fk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1091350345675-3dei34hm71duqqhipjn9g02siiv5ep3p.apps.googleusercontent.com",
+              "client_id": "725386009438-06qbb8u2n7cenju4p2sr8ounguha9kv1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
