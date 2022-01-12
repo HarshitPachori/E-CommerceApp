@@ -1,5 +1,5 @@
-
-import 'package:e_commerce/pages/authentication.dart';
+import 'package:e_commerce/Services/authentication.dart';
+import 'package:e_commerce/pages/admin_page.dart';
 import 'package:e_commerce/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -63,7 +63,10 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const AdminPage()));
+            },
             child: const ListTile(
               title: Text("Favourites"),
               leading: Icon(

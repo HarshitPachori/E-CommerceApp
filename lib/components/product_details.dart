@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,10 +11,10 @@ class ProductDetails extends StatefulWidget {
       this.productDetailPicture})
       : super(key: key);
 
-  final productDetailName;
-  final productDetailNewPrice;
-  final productDetailOldPrice;
-  final productDetailPicture;
+  final Object? productDetailName;
+  final Object? productDetailNewPrice;
+  final Object? productDetailOldPrice;
+  final Object? productDetailPicture;
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -54,12 +53,12 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: GridTile(
               child: Container(
                 color: Colors.white,
-                child: Image.asset(widget.productDetailPicture),
+                child: Image.asset("${widget.productDetailPicture}"),
               ),
               footer: Container(
                 child: ListTile(
                   leading: Text(
-                    widget.productDetailName,
+                    "${widget.productDetailName}",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 16),
                   ),
@@ -248,7 +247,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: Text(widget.productDetailName),
+                child: Text("${widget.productDetailName}"),
               ),
             ],
           ),
@@ -311,19 +310,19 @@ class _SimilarProductsState extends State<SimilarProducts> {
   var productList = [
     {
       "name": "Men's Blazer",
-      "picture": "images/16.jpeg",
+      "picture": "assets/images/16.jpeg",
       "old_price": 120,
       "price": 85,
     },
     {
       "name": "Heals",
-      "picture": "images/11.jpeg",
+      "picture": "assets/images/11.jpeg",
       "old_price": 100,
       "price": 50,
     },
     {
       "name": "Trouser",
-      "picture": "images/10.jpeg",
+      "picture": "assets/images/10.jpeg",
       "old_price": 100,
       "price": 50,
     },
@@ -347,10 +346,10 @@ class _SimilarProductsState extends State<SimilarProducts> {
 }
 
 class SimilarSingleProd extends StatelessWidget {
-  final productName;
-  final productPicture;
-  final productOldPrice;
-  final productPrice;
+  final Object? productName;
+  final Object? productPicture;
+  final Object? productOldPrice;
+  final Object? productPrice;
 
   const SimilarSingleProd(
       {Key? key,
@@ -365,7 +364,7 @@ class SimilarSingleProd extends StatelessWidget {
     return Card(
       elevation: 10,
       child: Hero(
-        tag: productName,
+        tag: "$productName",
         child: Material(
           child: InkWell(
             // here we are passing the value of product to theproduct etails page
@@ -383,7 +382,7 @@ class SimilarSingleProd extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        productName,
+                        "$productName",
                         style: TextStyle(
                             color: Colors.grey.shade800,
                             fontWeight: FontWeight.bold,
@@ -399,7 +398,7 @@ class SimilarSingleProd extends StatelessWidget {
                 ),
               ),
               child: Image.asset(
-                productPicture,
+                "$productPicture",
                 fit: BoxFit.cover,
               ),
             ),

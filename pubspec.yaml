@@ -45,19 +45,28 @@ dependencies:
   shared_preferences: ^2.0.11
   fluttertoast: ^8.0.8
   font_awesome_flutter: ^9.2.0
+  glassmorphism: ^3.0.0
+  google_fonts: ^2.2.0
+  
+  
   
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^1.0.0  
+  flutter_launcher_icons: ^0.9.2
+flutter_icons:    
+  android: true
+  image_path: "assets/images/online-shopping.png"   
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,35 +84,36 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-   - images/1.jpeg
-   - images/2.jpeg
-   - images/3.jpeg
-   - images/4.jpeg
-   - images/10.jpeg
-   - images/11.jpeg
-   - images/13.jpeg
-   - images/14.jpeg
-   - images/15.jpeg
-   - images/16.jpeg
-   - images/28.jpeg
-   - images/29.jpeg
-   - images/7.jpg
-   - images/8.jpg
-   - images/9.jpg
-   - images/12.jpg
-   - images/24.jpg
-   - images/25.jpg
-   - images/26.jpg
-   - images/27.jpg
-   - images/30.jpg
-   - images/5.png
-   - images/18.png
-   - images/17.png
-   - images/19.png
-   - images/20.png
-   - images/21.png
-   - images/22.png
-   - images/23.png
+    - assets/images/1.jpeg
+    - assets/images/2.jpeg
+    - assets/images/3.jpeg
+    - assets/images/4.jpeg
+    - assets/images/5.png
+    - assets/images/6.png
+    - assets/images/7.jpg
+    - assets/images/8.jpg
+    - assets/images/9.jpg
+    - assets/images/10.jpeg
+    - assets/images/11.jpeg
+    - assets/images/12.jpg
+    - assets/images/13.jpeg
+    - assets/images/14.jpeg
+    - assets/images/15.jpeg
+    - assets/images/16.jpeg
+    - assets/images/17.png
+    - assets/images/18.png
+    - assets/images/19.png
+    - assets/images/20.png
+    - assets/images/21.png
+    - assets/images/22.png
+    - assets/images/23.png
+    - assets/images/24.jpg
+    - assets/images/25.jpg
+    - assets/images/26.jpg
+    - assets/images/27.jpg
+    - assets/images/28.jpeg
+    - assets/images/29.jpeg
+    - assets/images/30.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

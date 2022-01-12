@@ -1,50 +1,65 @@
-import 'package:e_commerce/Services/authentication.dart';
+import 'package:e_commerce/Services/user_services.dart';
 import 'package:e_commerce/pages/homepage.dart';
-import 'package:e_commerce/pages/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegsiterPage extends StatefulWidget {
+  const RegsiterPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegsiterPageState createState() => _RegsiterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  String name = "";
-
+class _RegsiterPageState extends State<RegsiterPage> {
   bool obscureText = true;
-
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
+  final UserServices _userServices = UserServices();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> moveToHome() async {
     if (_formKey.currentState!.validate()) {
       try {
         await auth
-            .signInWithEmailAndPassword(
+            .createUserWithEmailAndPassword(
                 email: _emailController.text,
                 password: _passwordController.text)
-            .then((value) {
-          if (value != null) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
-          }
-        });
+            .then((value) => {
+                  _userServices.createUserData({
+                    "uid": value.user!.uid,
+                    "username": _nameController.text,
+                    "email": value.user!.email,
+                  }),
+                  if (value != null)
+                    {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()))
+                    }
+                })
+            .catchError((err) => {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(err))),
+                });
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
+        if (e.code == 'email-already-in-use') {
           ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("User not found with that email")));
-        } else if (e.code == 'wrong-password') {
+              const SnackBar(content: Text("Email is already in use ")));
+        } else if (e.code == 'invalid-email') {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text("Invalid Email")));
+        } else if (e.code == 'week-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Password is to week")));
+        } else if (e.code == 'operation-not-allowed') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text("Wrong password provided for that user.")));
+              content: Text("This operation is not allowed here ")));
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Something went wrong ")));
@@ -72,10 +87,9 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               scale: 1,
             ),
-
-            // const SizedBox(
-            //   height: 100,
-            // ),
+            const SizedBox(
+              height: 100,
+            ),
             SafeArea(
               child: Center(
                 child: SingleChildScrollView(
@@ -84,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: 20,
                     linearGradient: LinearGradient(
                         begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
+                        end: Alignment.bottomRight,
                         colors: [
                           const Color(0xFFffffff).withOpacity(0.5),
                           const Color(0xFFFFFFFF).withOpacity(0.5),
@@ -106,22 +120,71 @@ class _LoginPageState extends State<LoginPage> {
                     width: 350,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 32.0),
+                          vertical: 50.0, horizontal: 32.0),
                       child: Form(
                         key: _formKey,
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "Welcome here",
+                              "Register here ",
                               style: TextStyle(
                                   color: Colors.black.withOpacity(0.8),
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.name,
+                              controller: _nameController,
+                              cursorColor: Colors.black,
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(0.0),
+                                labelText: 'Name',
+                                hintText: 'Enter full name',
+                                labelStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                hintStyle: TextStyle(
+                                  color: Colors.grey.shade300,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15.0,
+                                ),
+                                prefixIcon: const Icon(
+                                  CupertinoIcons.person,
+                                  color: Colors.black,
+                                  size: 19,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.grey.shade200, width: 1.5),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                floatingLabelStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18.0,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.black, width: 1.5),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "name cannot be empty";
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                            const SizedBox(
+                              height: 20,
                             ),
                             TextFormField(
                               keyboardType: TextInputType.emailAddress,
@@ -168,7 +231,6 @@ class _LoginPageState extends State<LoginPage> {
                                 return null;
                               },
                               onChanged: (value) {
-                                name = value;
                                 setState(() {});
                               },
                             ),
@@ -238,21 +300,8 @@ class _LoginPageState extends State<LoginPage> {
                                 return null;
                               },
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Forgot Password?',
-                                    style: TextStyle(
-                                        color: Colors.black.withOpacity(0.6),
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w600,
-                                        decoration: TextDecoration.underline),
-                                  ),
-                                )
-                              ],
+                            const SizedBox(
+                              height: 40,
                             ),
                             MaterialButton(
                               onPressed: () async {
@@ -261,81 +310,10 @@ class _LoginPageState extends State<LoginPage> {
                               height: 45,
                               color: Colors.black.withOpacity(0.6),
                               child: const Text(
-                                "Login",
+                                "Create Account",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 16.0),
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 50),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Don\'t have an account?',
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(0.6),
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const RegsiterPage()));
-                                  },
-                                  child: Text(
-                                    'Register',
-                                    style: TextStyle(
-                                        color: Colors.blue.shade700,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w600,
-                                        decoration: TextDecoration.underline),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Text("OR",
-                                style: TextStyle(
-                                  color: Colors.black.withOpacity(0.6),
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                )),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            MaterialButton(
-                              onPressed: () {
-                                signInWithGoogle().whenComplete(() {
-                                  setState(() {});
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const HomePage()));
-                                });
-                              },
-                              height: 45,
-                              color: Colors.black.withOpacity(0.6),
-                              child: Row(children: const [
-                                Icon(
-                                  FontAwesomeIcons.google,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Login with Google",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16.0),
-                                ),
-                              ]),
                               padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 50),
                               shape: RoundedRectangleBorder(

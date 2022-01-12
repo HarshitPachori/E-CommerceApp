@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/components/horizontal_listview.dart';
 import 'package:e_commerce/components/products.dart';
-import 'package:e_commerce/my_drawer.dart';
-import 'package:e_commerce/pages/authentication.dart';
+import 'package:e_commerce/components/my_drawer.dart';
 import 'package:e_commerce/pages/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,35 +15,35 @@ class HomePage extends StatelessWidget {
       items: const [
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/2.jpeg"),
+          image: AssetImage("assets/images/2.jpeg"),
         ),
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/3.jpeg"),
+          image: AssetImage("assets/images/3.jpeg"),
         ),
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/4.jpeg"),
+          image: AssetImage("assets/images/4.jpeg"),
         ),
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/24.jpg"),
+          image: AssetImage("assets/images/24.jpg"),
         ),
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/25.jpg"),
+          image: AssetImage("assets/images/25.jpg"),
         ),
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/26.jpg"),
+          image: AssetImage("assets/images/26.jpg"),
         ),
         Image(
           fit: BoxFit.cover,
-          image: AssetImage("images/27.jpg"),
+          image: AssetImage("assets/images/27.jpg"),
         ),
       ],
       options: CarouselOptions(
-          height: 220,
+          height: 200,
           autoPlayCurve: Curves.fastOutSlowIn,
           autoPlay: true,
           enlargeCenterPage: true,
@@ -64,13 +63,9 @@ class HomePage extends StatelessWidget {
             children: [
               const Text("FashApp"),
               const SizedBox(
-                width: 110,
+                width: 100,
               ),
-              IconButton(
-                  onPressed: () {
-                    signOutGoogle();
-                  },
-                  icon: const Icon(Icons.search)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
               const SizedBox(
                 width: 10,
               ),
@@ -91,24 +86,22 @@ class HomePage extends StatelessWidget {
         body: Column(
           children: [
             const SizedBox(
-              height: 15,
+              height: 5,
             ),
             //image caroudel
             imageCorousel,
-            const SizedBox(
-              height: 15,
-            ),
+
             const Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(5),
               child: Text("Categories",
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18)),
             ),
 
             const HorizontalList(),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               child: Container(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: const Text(
                   "Recent Products",
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),

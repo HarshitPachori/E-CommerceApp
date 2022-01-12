@@ -11,7 +11,7 @@ class _CartProductsState extends State<CartProducts> {
   var productsOnTheCart = [
     {
       "name": "Men's Blazer",
-      "picture": "images/16.jpeg",
+      "picture": "assets/images/16.jpeg",
       "price": 85,
       "size": "M",
       "color": "Red",
@@ -19,7 +19,7 @@ class _CartProductsState extends State<CartProducts> {
     },
     {
       "name": "Red dress",
-      "picture": "images/14.jpeg",
+      "picture": "assets/images/14.jpeg",
       "price": 115,
       "size": "S",
       "color": "Red",
@@ -44,13 +44,13 @@ class _CartProductsState extends State<CartProducts> {
 }
 
 class SingleCartProducts extends StatelessWidget {
-  final cartprodName;
-  final cartprodPicture;
+  final Object? cartprodName;
+  final Object? cartprodPicture;
 
-  final cartprodPrice;
-  final cartprodSize;
-  final cartprodColor;
-  final cartprodQuantity;
+  final Object? cartprodPrice;
+  final Object? cartprodSize;
+  final Object? cartprodColor;
+  final Object? cartprodQuantity;
 
   const SingleCartProducts(
       {Key? key,
@@ -71,10 +71,10 @@ class SingleCartProducts extends StatelessWidget {
 
         // leading section
         leading: Image.asset(
-          cartprodPicture,
+          "$cartprodPicture",
           fit: BoxFit.cover,
         ),
-        title: Text(cartprodName),
+        title: Text("$cartprodName"),
 
         trailing: Column(
           children: [
@@ -105,7 +105,7 @@ class SingleCartProducts extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    cartprodSize,
+                    "$cartprodSize",
                     style: const TextStyle(color: Colors.red),
                   ),
                 ),
@@ -116,7 +116,7 @@ class SingleCartProducts extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    cartprodColor,
+                    "$cartprodColor",
                     style: const TextStyle(color: Colors.red),
                   ),
                 ),
@@ -138,6 +138,4 @@ class SingleCartProducts extends StatelessWidget {
       ),
     );
   }
-
- 
 }

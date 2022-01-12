@@ -6,17 +6,25 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 115,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: const [
-          Category(imageLocation: "images/17.png", imageCaption: "T-shirt"),
-          Category(imageLocation: "images/22.png", imageCaption: "Dress"),
-          Category(imageLocation: "images/19.png", imageCaption: "Jeans"),
-          Category(imageLocation: "images/21.png", imageCaption: "Formal"),
-          Category(imageLocation: "images/20.png", imageCaption: "Casual"),
-          Category(imageLocation: "images/18.png", imageCaption: "Shoes"),
-          Category(imageLocation: "images/23.png", imageCaption: "Accesories"),
+          Category(
+              imageLocation: "assets/images/17.png", imageCaption: "T-shirt"),
+          Category(
+              imageLocation: "assets/images/22.png", imageCaption: "Dress"),
+          Category(
+              imageLocation: "assets/images/19.png", imageCaption: "Jeans"),
+          Category(
+              imageLocation: "assets/images/21.png", imageCaption: "Formal"),
+          Category(
+              imageLocation: "assets/images/20.png", imageCaption: "Casual"),
+          Category(
+              imageLocation: "assets/images/18.png", imageCaption: "Shoes"),
+          Category(
+              imageLocation: "assets/images/23.png",
+              imageCaption: "Accesories"),
         ],
       ),
     );
@@ -45,7 +53,7 @@ class Category extends StatelessWidget {
               child: Text(
                 imageCaption,
                 style: const TextStyle(
-                    fontSize: 15.0, fontWeight: FontWeight.w600),
+                    fontSize: 14.0, fontWeight: FontWeight.w600),
               )),
         ),
       ),

@@ -1,7 +1,9 @@
-
+import 'package:e_commerce/pages/homepage.dart';
 import 'package:e_commerce/pages/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,8 +27,12 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
+  final user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: LoginPage());
+    return MaterialApp(
+        theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
+        home: (user != null) ? const HomePage() : const LoginPage());
   }
 }

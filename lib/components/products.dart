@@ -1,4 +1,4 @@
-import 'package:e_commerce/pages/product_details.dart';
+import 'package:e_commerce/components/product_details.dart';
 import 'package:flutter/material.dart';
 
 class Products extends StatefulWidget {
@@ -12,37 +12,37 @@ class _ProductsState extends State<Products> {
   var productList = [
     {
       "name": "Men's Blazer",
-      "picture": "images/16.jpeg",
+      "picture": "assets/images/16.jpeg",
       "old_price": 120,
       "price": 85,
     },
     {
       "name": "Red dress",
-      "picture": "images/14.jpeg",
+      "picture": "assets/images/14.jpeg",
       "old_price": 100,
       "price": 50,
     },
     {
       "name": "Women' Blazer",
-      "picture": "images/15.jpeg",
+      "picture": "assets/images/15.jpeg",
       "old_price": 100,
       "price": 50,
     },
     {
       "name": "Black Dress",
-      "picture": "images/13.jpeg",
+      "picture": "assets/images/13.jpeg",
       "old_price": 100,
       "price": 50,
     },
     {
       "name": "Heals",
-      "picture": "images/11.jpeg",
+      "picture": "assets/images/11.jpeg",
       "old_price": 100,
       "price": 50,
     },
     {
       "name": "Trouser",
-      "picture": "images/10.jpeg",
+      "picture": "assets/images/10.jpeg",
       "old_price": 100,
       "price": 50,
     },
@@ -69,10 +69,10 @@ class _ProductsState extends State<Products> {
 }
 
 class SingleProd extends StatelessWidget {
-  final productName;
-  final productPicture;
-  final productOldPrice;
-  final productPrice;
+  final Object? productName;
+  final Object? productPicture;
+  final Object? productOldPrice;
+  final Object? productPrice;
 
   const SingleProd(
       {Key? key,
@@ -87,7 +87,7 @@ class SingleProd extends StatelessWidget {
     return Card(
       elevation: 10,
       child: Hero(
-        tag: productName,
+        tag: "$productName",
         child: Material(
           child: InkWell(
             // here we are passing the value of product to theproduct etails page
@@ -105,7 +105,7 @@ class SingleProd extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        productName,
+                        "$productName",
                         style: TextStyle(
                             color: Colors.grey.shade800,
                             fontWeight: FontWeight.bold,
@@ -121,7 +121,7 @@ class SingleProd extends StatelessWidget {
                 ),
               ),
               child: Image.asset(
-                productPicture,
+                "$productPicture",
                 fit: BoxFit.cover,
               ),
             ),
