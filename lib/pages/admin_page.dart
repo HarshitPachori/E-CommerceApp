@@ -1,3 +1,4 @@
+import 'package:e_commerce/Services/add_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -28,6 +29,8 @@ class _AdminPageState extends State<AdminPage> {
         systemOverlayStyle:
             const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: TextButton.icon(
@@ -202,7 +205,11 @@ class _AdminPageState extends State<AdminPage> {
             ListTile(
               leading: const Icon(Icons.add),
               title: const Text("Add Products"),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                MaterialPageRoute(builder: (context)=>const AddProducts()));
+              },
             ),
             ListTile(
               leading: const Icon(Icons.change_history),
@@ -253,7 +260,9 @@ class _AdminPageState extends State<AdminPage> {
         ),
       ),
       actions: [
-        TextButton(onPressed: () {}, child: const Text("ADD")),
+        TextButton(onPressed: () {
+          
+        }, child: const Text("ADD")),
         TextButton(
             onPressed: () {
               Navigator.pop(context);

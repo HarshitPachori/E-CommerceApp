@@ -1,9 +1,10 @@
 import 'package:e_commerce/Services/user_services.dart';
-import 'package:e_commerce/pages/homepage.dart';
+import 'package:e_commerce/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
 class RegsiterPage extends StatefulWidget {
@@ -30,6 +31,7 @@ class _RegsiterPageState extends State<RegsiterPage> {
                 email: _emailController.text,
                 password: _passwordController.text)
             .then((value) => {
+              Fluttertoast.showToast(msg: "User created successfully"),
                   _userServices.createUserData({
                     "uid": value.user!.uid,
                     "username": _nameController.text,
@@ -40,7 +42,7 @@ class _RegsiterPageState extends State<RegsiterPage> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()))
+                              builder: (context) => const LoginPage()))
                     }
                 })
             .catchError((err) => {
@@ -80,13 +82,14 @@ class _RegsiterPageState extends State<RegsiterPage> {
       body: Center(
         child: Stack(
           children: <Widget>[
-            Image.network(
-              "https://images.unsplash.com/photo-1513094735237-8f2714d57c13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-              fit: BoxFit.cover,
-              height: double.infinity,
-              width: double.infinity,
-              scale: 1,
-            ),
+            // Image.network(
+            //   "https://images.unsplash.com/photo-1513094735237-8f2714d57c13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+            //   fit: BoxFit.cover,
+            //   height: double.infinity,
+            //   width: double.infinity,
+            //   scale: 1,
+            // ),
+             Image.asset("assets/images/7.jpg",height: double.infinity,width: double.infinity,fit: BoxFit.cover,),
             const SizedBox(
               height: 100,
             ),

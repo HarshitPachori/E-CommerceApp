@@ -12,13 +12,13 @@ class _ProductsState extends State<Products> {
   var productList = [
     {
       "name": "Men's Blazer",
-      "picture": "assets/images/16.jpeg",
+      "picture": "assets/images/blazer.png",
       "old_price": 120,
       "price": 85,
     },
     {
       "name": "Red dress",
-      "picture": "assets/images/14.jpeg",
+      "picture": "assets/images/reddress.png",
       "old_price": 100,
       "price": 50,
     },
@@ -30,13 +30,13 @@ class _ProductsState extends State<Products> {
     },
     {
       "name": "Black Dress",
-      "picture": "assets/images/13.jpeg",
+      "picture": "assets/images/shirt1.png",
       "old_price": 100,
       "price": 50,
     },
     {
       "name": "Heals",
-      "picture": "assets/images/11.jpeg",
+      "picture": "assets/images/heals.png",
       "old_price": 100,
       "price": 50,
     },
@@ -84,50 +84,55 @@ class SingleProd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      child: Hero(
-        tag: "$productName",
-        child: Material(
-          child: InkWell(
-            // here we are passing the value of product to theproduct etails page
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ProductDetails(
-                      productDetailName: productName,
-                      productDetailNewPrice: productPrice,
-                      productDetailPicture: productPicture,
-                      productDetailOldPrice: productOldPrice,
-                    ))),
-            child: GridTile(
-              footer: Container(
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "$productName",
-                        style: TextStyle(
-                            color: Colors.grey.shade800,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.0),
-                      ),
+    return
+      Card(
+
+        elevation: 10,
+        child: Hero(
+
+          tag: "$productName",
+
+            child: InkWell(
+                // here we are passing the value of product to theproduct etails page
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProductDetails(
+                          productDetailName: productName,
+                          productDetailNewPrice: productPrice,
+                          productDetailPicture: productPicture,
+                          productDetailOldPrice: productOldPrice,
+                        ))),
+                child: GridTile(
+                  footer: Card(
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "$productName",
+                            style: TextStyle(
+                                color: Colors.grey.shade800,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0),
+                          ),
+                        ),
+                        Text(
+                          "$productPrice",
+                          style: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
-                    Text(
-                      "$productPrice",
-                      style: const TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.bold),
-                    )
-                  ],
+                  ),
+                  child: Image.asset(
+                    "$productPicture",
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-              child: Image.asset(
-                "$productPicture",
-                fit: BoxFit.cover,
-              ),
-            ),
           ),
-        ),
-      ),
+
+
+
     );
   }
 }

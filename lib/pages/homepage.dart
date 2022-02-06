@@ -14,33 +14,21 @@ class HomePage extends StatelessWidget {
     Widget imageCorousel = CarouselSlider(
       items: const [
         Image(
+          fit: BoxFit.fill,
+          image: AssetImage("assets/images/1.jpeg"),
+        ),
+        Image(
           fit: BoxFit.cover,
           image: AssetImage("assets/images/2.jpeg"),
         ),
         Image(
           fit: BoxFit.cover,
           image: AssetImage("assets/images/3.jpeg"),
-        ),
-        Image(
+        ), Image(
           fit: BoxFit.cover,
           image: AssetImage("assets/images/4.jpeg"),
         ),
-        Image(
-          fit: BoxFit.cover,
-          image: AssetImage("assets/images/24.jpg"),
-        ),
-        Image(
-          fit: BoxFit.cover,
-          image: AssetImage("assets/images/25.jpg"),
-        ),
-        Image(
-          fit: BoxFit.cover,
-          image: AssetImage("assets/images/26.jpg"),
-        ),
-        Image(
-          fit: BoxFit.cover,
-          image: AssetImage("assets/images/27.jpg"),
-        ),
+
       ],
       options: CarouselOptions(
           height: 200,
@@ -56,12 +44,12 @@ class HomePage extends StatelessWidget {
           systemOverlayStyle:
               const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
           centerTitle: true,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.teal,
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("FashApp"),
+              const Text("Shopify"),
               const SizedBox(
                 width: 100,
               ),
@@ -88,20 +76,21 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            //image caroudel
-            imageCorousel,
-
-            const Padding(
-              padding: EdgeInsets.all(5),
-              child: Text("Categories",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18)),
+  Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+              child: Container(
+                alignment: Alignment.topLeft,
+                child: const Text("Categories",
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),),
+              ),
             ),
 
             const HorizontalList(),
+              imageCorousel,
             Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
               child: Container(
-                alignment: Alignment.center,
+                alignment: Alignment.topLeft,
                 child: const Text(
                   "Recent Products",
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),

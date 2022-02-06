@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:e_commerce/Services/authentication.dart';
 import 'package:e_commerce/pages/admin_page.dart';
 import 'package:e_commerce/pages/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -8,57 +11,60 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user =FirebaseAuth.instance.currentUser!;
     return Drawer(
+      backgroundColor: Colors.teal.shade100,
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text(" Harshit Pachori"),
-            accountEmail: const Text(" harshitpachori345@gmail.com"),
+            accountName:  Text(user.displayName.toString(),style: TextStyle(fontWeight: FontWeight.w600),),
+            accountEmail:  Text(user.email.toString(),style: TextStyle(fontWeight: FontWeight.w600)),
             currentAccountPicture: GestureDetector(
-              child: const CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(Icons.person),
+              child:  Container(
+               
+               decoration:  BoxDecoration(borderRadius: BorderRadius.circular(40),image: DecorationImage(image: NetworkImage(user.photoURL.toString(),),fit: BoxFit.cover),),
+                
               ),
             ),
-            decoration: const BoxDecoration(color: Colors.red),
+            decoration: const BoxDecoration(color: Colors.teal),
           ),
           InkWell(
             onTap: () {},
-            child: const ListTile(
-              title: Text("Home Page"),
+            child:  ListTile(
+              title: const Text("Home Page"),
               leading: Icon(
                 Icons.home,
-                color: Colors.red,
+                color: Colors.teal.shade700,
               ),
             ),
           ),
           InkWell(
             onTap: () {},
-            child: const ListTile(
-              title: Text("My Account"),
+            child:  ListTile(
+              title: const Text("My Account"),
               leading: Icon(
                 Icons.person,
-                color: Colors.red,
+                color: Colors.teal.shade700,
               ),
             ),
           ),
           InkWell(
             onTap: () {},
-            child: const ListTile(
-              title: Text("My Orders"),
+            child:  ListTile(
+              title: const Text("My Orders"),
               leading: Icon(
                 Icons.shopping_basket,
-                color: Colors.red,
+                color: Colors.teal.shade700,
               ),
             ),
           ),
           InkWell(
             onTap: () {},
-            child: const ListTile(
-              title: Text("Shopping Cart"),
+            child:  ListTile(
+              title: const Text("Shopping Cart"),
               leading: Icon(
                 Icons.shopping_cart,
-                color: Colors.red,
+                color: Colors.teal.shade700,
               ),
             ),
           ),
@@ -67,11 +73,11 @@ class MyDrawer extends StatelessWidget {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const AdminPage()));
             },
-            child: const ListTile(
-              title: Text("Favourites"),
+            child:  ListTile(
+              title: const Text("Favourites"),
               leading: Icon(
                 Icons.favorite,
-                color: Colors.red,
+                color: Colors.teal.shade700,
               ),
             ),
           ),

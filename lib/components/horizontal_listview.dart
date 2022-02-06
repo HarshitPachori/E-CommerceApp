@@ -6,25 +6,25 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 115,
+      height: 100,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: const [
           Category(
-              imageLocation: "assets/images/17.png", imageCaption: "T-shirt"),
+              imageLocation: "assets/images/apparel.png", imageCaption: "T-shirt"),
           Category(
-              imageLocation: "assets/images/22.png", imageCaption: "Dress"),
+              imageLocation: "assets/images/icon-8.png", imageCaption: "Dress"),
           Category(
-              imageLocation: "assets/images/19.png", imageCaption: "Jeans"),
+              imageLocation: "assets/images/icon-9.png", imageCaption: "Jeans"),
           Category(
-              imageLocation: "assets/images/21.png", imageCaption: "Formal"),
+              imageLocation: "assets/images/icon-10.png", imageCaption: "Formal"),
           Category(
-              imageLocation: "assets/images/20.png", imageCaption: "Casual"),
+              imageLocation: "assets/images/icon-12.png", imageCaption: "Casual"),
           Category(
-              imageLocation: "assets/images/18.png", imageCaption: "Shoes"),
+              imageLocation: "assets/images/beauty.png", imageCaption: "Shoes"),
           Category(
-              imageLocation: "assets/images/23.png",
-              imageCaption: "Accesories"),
+              imageLocation: "assets/images/icon-9.png",
+              imageCaption: "Accessories"),
         ],
       ),
     );
@@ -42,11 +42,11 @@ class Category extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: SizedBox(
-        width: 110,
+        width: 100,
         child: ListTile(
           title: Image(
             image: AssetImage(imageLocation),
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
           subtitle: Container(
               alignment: Alignment.topCenter,

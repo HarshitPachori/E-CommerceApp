@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
@@ -33,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 email: _emailController.text,
                 password: _passwordController.text)
             .then((value) {
+          Fluttertoast.showToast(msg: "User Signed in successfully");
           if (value != null) {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const HomePage()));
@@ -65,12 +67,18 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: Stack(
           children: <Widget>[
-            Image.network(
-              "https://images.unsplash.com/photo-1513094735237-8f2714d57c13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-              fit: BoxFit.cover,
+            // Image.network(
+            //   "https://images.unsplash.com/photo-1513094735237-8f2714d57c13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+            //   fit: BoxFit.cover,
+            //   height: double.infinity,
+            //   width: double.infinity,
+            //   scale: 1,
+            // ),
+            Image.asset(
+              "assets/images/7.jpg",
               height: double.infinity,
               width: double.infinity,
-              scale: 1,
+              fit: BoxFit.cover,
             ),
 
             // const SizedBox(
